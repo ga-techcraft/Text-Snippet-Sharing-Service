@@ -23,21 +23,21 @@ $path = ltrim($path, '/');
 
 // ルートにパスが存在するかチェックする
 if (isset($routes[$path])) {
-    // コールバックを呼び出してrendererを作成します。
-    $renderer = $routes[$path]();
-
     try{
+        // コールバックを呼び出してrendererを作成します。
+        $renderer = $routes[$path]();
+
         // ヘッダーを設定します。
         foreach ($renderer->getFields() as $name => $value) {
-          // 改行コードがあるか確認 → セキュリティ対策（ヘッダーインジェクション防止）
-          if (preg_match('/[\r\n]/', $value)) {
-              http_response_code(500);
-              if ($DEBUG) print("Invalid header value: '$value'");
-              exit;
-          }
-      
-          header("$name: $value");
-          print($renderer->getContent());
+            // 改行コードがあるか確認 → セキュリティ対策（ヘッダーインジェクション防止）
+            if (preg_match('/[\r\n]/', $value)) {
+                http_response_code(500);
+                if ($DEBUG) print("Invalid header value: '$value'");
+                exit;
+            }
+        
+            header("$name: $value");
+            print($renderer->getContent());
         }
     }
     catch (Exception $e){
