@@ -1,22 +1,3 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8" />
-  <title>Monaco with Language & Expiry</title>
-  <style>
-    #editor {
-      width: 100%;
-      height: 400px;
-      border: 1px solid #ccc;
-      margin-top: 10px;
-    }
-    .controls {
-      margin-bottom: 10px;
-    }
-  </style>
-</head>
-<body>
-
   <div class="controls">
   </div>
 

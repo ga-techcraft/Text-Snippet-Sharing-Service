@@ -1,29 +1,10 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8" />
-  <title>Monaco with Language & Expiry</title>
-  <style>
-    #editor {
-      width: 100%;
-      height: 400px;
-      border: 1px solid #ccc;
-      margin-top: 10px;
-    }
-    .controls {
-      margin-bottom: 10px;
-    }
-  </style>
-</head>
-<body>
-
   <div class="controls">
     <label for="language-select">言語を選択：</label>
     <select id="language-select">
-      <option value="javascript">JavaScript</option>
       <option value="html">HTML</option>
       <option value="css">CSS</option>
       <option value="php">PHP</option>
+      <option value="javascript">JavaScript</option>
       <option value="python">Python</option>
       <option value="c">C</option>
       <option value="cpp">C++</option>
@@ -41,7 +22,6 @@
   </div>
 
   <div id="editor"></div>
-  <div id="copy-result"></div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.44.0/min/vs/loader.min.js"></script>
   <script>
@@ -83,14 +63,14 @@
           console.log(data)
           navigator.clipboard.writeText(data.url)
           .then(() => {
-            document.getElementById('copy-result').textContent = 'URLをコピーしました！ ';
+            alert('コードシェアのURLをコピーしました。');
           })
           .catch(() => {
-            document.getElementById('copy-result').textContent = 'コピーに失敗しました…';
+            alert('エラーが発生しました。');
           });
         })
         .catch(err => {
-          console.error('エラー: ', err)
+          alert('エラーが発生しました。');
         })
       });
 
