@@ -28,12 +28,12 @@
 
     require(['vs/editor/editor.main'], function () {
       const editor = monaco.editor.create(document.getElementById('editor'), {
-        value: '// コードをここに入力...',
-        language: 'javascript',
+        value: '',
+        language: '',
         theme: 'vs-dark'
       });
 
-      fetch("/api?slug=<?php echo $slug ?>")
+      fetch("/api/snippets/get?slug=<?php echo $slug ?>")
           .then(res => res.json())
           .then(data => {
             console.log(data)

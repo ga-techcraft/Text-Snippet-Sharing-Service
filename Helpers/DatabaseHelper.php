@@ -45,7 +45,7 @@ class DatabaseHelper{
     $stmt->bind_param('ssss', $slug, $content, $language, $expires_at);
     $stmt->execute();
 
-    return 'localhost:8000/snippets?slug=' . $slug;
+    return 'localhost:8000/snippets/get?slug=' . $slug;
 
 }
 

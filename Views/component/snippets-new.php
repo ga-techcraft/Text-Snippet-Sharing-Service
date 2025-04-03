@@ -67,7 +67,7 @@
         const content = editor.getValue();
 
 
-        fetch('/index', {
+        fetch('/api/snippets/create', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'  
@@ -83,7 +83,7 @@
           console.log(data)
           navigator.clipboard.writeText(data.url)
           .then(() => {
-            document.getElementById('copy-result').textContent = 'URLをコピーしました！ 🎉';
+            document.getElementById('copy-result').textContent = 'URLをコピーしました！ ';
           })
           .catch(() => {
             document.getElementById('copy-result').textContent = 'コピーに失敗しました…';
