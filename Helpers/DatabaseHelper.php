@@ -50,17 +50,15 @@ class DatabaseHelper{
 
 }
 
-  public static function getSnippet(): Array{
+  public static function getSnippet(): ?Array{
     $slug = $_GET['slug'];
 
     $db = new MySQLWrapper();
-    $stmt = $db->prepare("SELECT content, language FROM snippets WHERE slug = ?");
+    $stmt = $db->prepare("SELECT content, language, deleted_at FROM snippets WHERE slug = ?");
     $stmt->bind_param('s', $slug);
     $stmt->execute();
 
     $data = $stmt->get_result();
-    // 以下でデータを受信できなかったときの対応を追加する
-    if (!$data) throw new Exception('Expired Snippet');
 
     return $data->fetch_assoc();
   }
@@ -81,20 +79,5 @@ class DatabaseHelper{
     $stmt = $db->prepare("DELETE FROM snippets WHERE slug = ?");
     $stmt->bind_param('s', $slug);
     $stmt->execute();
-  }
-
-  public static function isExistSnippet(): bool{
-    $slug = $_GET['slug'];
-
-    $db = new MySQLWrapper();
-    $stmt = $db->prepare("SELECT * FROM snippets WHERE slug = ? AND deleted_at IS NULL");
-    $stmt->bind_param('s', $slug);
-    $stmt->execute();
-
-    $data = $stmt->get_result();
-
-    if (!$data->num_rows) return false;
-    
-    return true;
   }
 }

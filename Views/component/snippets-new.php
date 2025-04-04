@@ -1,25 +1,23 @@
-  <div class="controls">
-    <label for="language-select">言語を選択：</label>
-    <select id="language-select">
-      <option value="html">HTML</option>
-      <option value="css">CSS</option>
-      <option value="php">PHP</option>
-      <option value="javascript">JavaScript</option>
-      <option value="python">Python</option>
-      <option value="c">C</option>
-      <option value="cpp">C++</option>
-    </select>
+  <label for="language-select">言語を選択：</label>
+  <select id="language-select">
+    <option value="html">HTML</option>
+    <option value="css">CSS</option>
+    <option value="php">PHP</option>
+    <option value="javascript">JavaScript</option>
+    <option value="python">Python</option>
+    <option value="c">C</option>
+    <option value="cpp">C++</option>
+  </select>
 
-    <label for="expiry-select" style="margin-left: 20px;">有効期限：</label>
-    <select id="expiry-select">
-      <option value="10m">10分</option>
-      <option value="1h">1時間</option>
-      <option value="1d">1日</option>
-      <option value="never">永続</option>
-    </select>
+  <label for="expiry-select" style="margin-left: 20px;">有効期限：</label>
+  <select id="expiry-select">
+    <option value="10m">10分</option>
+    <option value="1h">1時間</option>
+    <option value="1d">1日</option>
+    <option value="never">永続</option>
+  </select>
 
-    <button id="generate-btn" style="margin-left: 20px;">Generate URL</button>
-  </div>
+  <button id="generate-btn" style="margin-left: 20px;">Generate URL</button>
 
   <div id="editor"></div>
 
