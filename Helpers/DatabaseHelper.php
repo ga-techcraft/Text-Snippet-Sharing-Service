@@ -4,6 +4,7 @@ namespace Helpers;
 
 use Database\MySQLWrapper;
 use DateTime;
+use Dom\Mysql;
 use Exception;
 
 class DatabaseHelper{
@@ -49,12 +50,12 @@ class DatabaseHelper{
 
 }
 
-  public static function getContent(): Array{
-    $url = $_GET['slug'];
+  public static function getSnippet(): Array{
+    $slug = $_GET['slug'];
 
     $db = new MySQLWrapper();
     $stmt = $db->prepare("SELECT content, language FROM snippets WHERE slug = ?");
-    $stmt->bind_param('s', $url);
+    $stmt->bind_param('s', $slug);
     $stmt->execute();
 
     $data = $stmt->get_result();
@@ -62,5 +63,38 @@ class DatabaseHelper{
     if (!$data) throw new Exception('Expired Snippet');
 
     return $data->fetch_assoc();
+  }
+
+  public static function softDeleteSnippet(){
+    $slug = $_GET['slug'];
+
+    $db = new MySQLWrapper();
+    $stmt = $db->prepare("UPDATE snippets SET deleted_at = NOW() WHERE slug = ?");
+    $stmt->bind_param('s', $slug);
+    $stmt->execute();
+  }
+
+  public static function hardDeleteSnippet(){
+    $slug = $_GET['slug'];
+
+    $db = new MySQLWrapper();
+    $stmt = $db->prepare("DELETE FROM snippets WHERE slug = ?");
+    $stmt->bind_param('s', $slug);
+    $stmt->execute();
+  }
+
+  public static function isExistSnippet(): bool{
+    $slug = $_GET['slug'];
+
+    $db = new MySQLWrapper();
+    $stmt = $db->prepare("SELECT * FROM snippets WHERE slug = ? AND deleted_at IS NULL");
+    $stmt->bind_param('s', $slug);
+    $stmt->execute();
+
+    $data = $stmt->get_result();
+
+    if (!$data->num_rows) return false;
+    
+    return true;
   }
 }

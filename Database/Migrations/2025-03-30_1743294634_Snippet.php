@@ -14,7 +14,8 @@ class Snippet implements SchemaMigration
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 slug VARCHAR(255) NOT NULL UNIQUE,       
                 content TEXT NOT NULL,                 
-                language VARCHAR(30) NOT NULL,         
+                language VARCHAR(30) NOT NULL,  
+                deleted_at DATETIME DEFAULT NULL,       
                 created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
                 expires_at DATETIME DEFAULT NULL         -- 有効期限（NULLなら期限なし）
             );

@@ -20,7 +20,7 @@ return [
         return new HTMLRenderer('component/snippets-view', ['slug'=>$slug]);
     },
     'api/snippets/get' => function(): JSONRenderer{
-        $snippetInfo = DatabaseHelper::getContent();
+        $snippetInfo = DatabaseHelper::getSnippet();
         return new JSONRenderer(['snippetInfo'=>$snippetInfo]);
     },
 ];
