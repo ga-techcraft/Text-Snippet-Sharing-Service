@@ -1,9 +1,10 @@
 <?php
 
-return [
-  Commands\Programs\Migrate::class,
-  Commands\Programs\CodeGeneration::class,
-  Commands\Programs\DBWipe::class,
-  Commands\Programs\DBRestore::class,
-  Commands\Programs\Seed::class,
-];
+return array (
+  0 => 'Commands\\Programs\\Migrate',
+  1 => 'Commands\\Programs\\CodeGeneration',
+  2 => 'Commands\\Programs\\DBWipe',
+  3 => 'Commands\\Programs\\DBRestore',
+  4 => 'Commands\\Programs\\Seed',
+  5 => 'Commands\\Programs\\Cron',
+);

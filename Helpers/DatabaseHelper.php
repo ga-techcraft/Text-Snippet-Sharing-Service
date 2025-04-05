@@ -64,20 +64,12 @@ class DatabaseHelper{
   }
 
   public static function softDeleteSnippet(){
-    $slug = $_GET['slug'];
-
     $db = new MySQLWrapper();
-    $stmt = $db->prepare("UPDATE snippets SET deleted_at = NOW() WHERE slug = ?");
-    $stmt->bind_param('s', $slug);
-    $stmt->execute();
+    $db->query("UPDATE snippets SET deleted_at = NOW() WHERE expires_at <= NOW()");
   }
 
   public static function hardDeleteSnippet(){
-    $slug = $_GET['slug'];
-
     $db = new MySQLWrapper();
-    $stmt = $db->prepare("DELETE FROM snippets WHERE slug = ?");
-    $stmt->bind_param('s', $slug);
-    $stmt->execute();
+    $db->query("DELETE FROM snippets WHERE deleted_at IS NOT NULL");
   }
 }
