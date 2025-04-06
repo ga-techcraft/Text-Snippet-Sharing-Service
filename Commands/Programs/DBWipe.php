@@ -51,8 +51,8 @@ class DBWipe extends AbstractCommand
 
     private function backup($database): void
     {
-      $username = $username??Settings::env('DATABASE_USER');
-      $database = $database??Settings::env('DATABASE_NAME');
+      $username = Settings::env('DATABASE_USER');
+      $database = Settings::env('DATABASE_NAME');      
       $backupFile = dirname(__DIR__, 2) . '/backup.sql';
 
       $command = "mysqldump -u $username -p $database > $backupFile";
