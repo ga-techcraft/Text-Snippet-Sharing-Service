@@ -15,7 +15,7 @@ class DBWipe extends AbstractCommand
     // 引数を割り当て
     public static function getArguments(): array
     {
-        return [new Argument('backup')->description('backup the data')->required(false)->allowAsShort(true)];
+        return [(new Argument('backup'))->description('backup the data')->required(false)->allowAsShort(true)];
     }
 
     public function execute(): int
