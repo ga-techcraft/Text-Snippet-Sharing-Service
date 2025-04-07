@@ -10,8 +10,15 @@ spl_autoload_register(function($class) {
 
 $DEBUG = true;
 
-if (preg_match('/\.(?:png|jpg|jpeg|gif|js|css|html)$/', $_SERVER["REQUEST_URI"])) {
+$requestURI = $_SERVER['REQUEST_URI'];
+
+if (preg_match('/\.(?:png|jpg|jpeg|gif|js|css|html)$/', $requestURI)) {
   return false;
+}
+
+if ($requestURI === '/' || $requestURI === '') {
+    header("Location: /snippets/new");
+    exit;
 }
 
 // ルートを読み込みます。
