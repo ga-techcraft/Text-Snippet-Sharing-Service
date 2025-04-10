@@ -89,4 +89,5 @@ GitHub の Webhook を使って、デプロイコマンドをサーバー側で�
     https://qiita.com/TechCraft/items/82ea8a4e1719592434d1  
 
 - Webhook + GitHub + PHP を使った**自動デプロイの構築**  
-    → 詳細について今後 Qiita 記事に記載します。
+    → 詳細について以下の Qiita 記事に記載しています。
+　　　https://qiita.com/TechCraft/items/576464946639eced8f0b
